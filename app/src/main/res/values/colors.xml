@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_gray">#E0E0E0</color>
     <color name="teal">#03A9F4</color>
+    <color name="color_progress_none">#dc1e0b</color>
+    <color name="color_progress_full">#35ba01</color>
+
 </resources>
