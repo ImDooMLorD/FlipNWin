@@ -11,3 +11,5 @@ fun isPermissionGranted(context: Context, permission: String): Boolean {
         context, permission
     ) == PackageManager.PERMISSION_GRANTED
 }
+
+

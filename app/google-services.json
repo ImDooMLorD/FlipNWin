@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "678679035099",
+    "project_id": "mymemory-97b2a",
+    "storage_bucket": "mymemory-97b2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678679035099:android:d5fdbf959cd0015a74a0fe",
+        "android_client_info": {
+          "package_name": "com.imdoomlord.mymemory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXxX-J74OnRVYwHEJlJ-YPlznnqeHKelc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

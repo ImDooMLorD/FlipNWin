@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.imdoomlord.mymemory" />
+                  <option name="mobileSdkAppId" value="1:678679035099:android:d5fdbf959cd0015a74a0fe" />
+                  <option name="projectId" value="mymemory-97b2a" />
+                  <option name="projectNumber" value="678679035099" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
