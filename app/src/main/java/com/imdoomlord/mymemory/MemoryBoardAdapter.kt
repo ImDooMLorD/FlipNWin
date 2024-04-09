@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.imdoomlord.mymemory.models.BoardSize
 import com.imdoomlord.mymemory.models.MemoryCard
+import com.squareup.picasso.Picasso
 import kotlin.math.min
 import com.imdoomlord.mymemory.MemoryBoardAdapter.ViewHolder as ViewHolder
 
@@ -61,16 +62,27 @@ class MemoryBoardAdapter(
         private val imageButton = itemView.findViewById<ImageButton>(R.id.imageButton)
 
         fun bind(position: Int) {
-            val memoryCard :MemoryCard = cards[position]
+            val memoryCard = cards[position]
+            if (memoryCard.isFaceUp) {
+                if (memoryCard.imageUrl != null) {
+                    // Using picasso library it shows custom card image
+                    Picasso.get().load(memoryCard.imageUrl).into(imageButton)
+                } else {
+                    // To show card image in case of default cards
+                    imageButton.setImageResource(memoryCard.identifier)
 
-             //? To Check whether a card is faceUp or not -> and to show card image
-            imageButton.setImageResource(if (memoryCard.isFaceUp) memoryCard.identifier else R.drawable.ic_launcher_background)
+                }
+
+            } else {
+                imageButton.setImageResource(R.drawable.ic_launcher_background)
+            }
+
+
 
             //? To update the UI of cards when 2 cards are matched..
             imageButton.alpha = if(memoryCard.isMatched) .2f else 1.0f
-
-            //TODO: code to change background(in both dark and bright themes of app) to gray when pair is matched....
-
+            val colorStateList = if(memoryCard.isMatched) ContextCompat.getColorStateList(context, R.color.color_gray) else null
+            ViewCompat.setBackgroundTintList(imageButton, colorStateList)
 
             imageButton.setOnClickListener{
                 Log.i(TAG , "Clicked on Position $position")

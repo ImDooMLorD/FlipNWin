@@ -1,6 +1,7 @@
 package com.imdoomlord.mymemory
 
 import android.animation.ArgbEvaluator
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -19,9 +21,14 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import com.imdoomlord.mymemory.models.BoardSize
 import com.imdoomlord.mymemory.models.MemoryGame
+import com.imdoomlord.mymemory.models.UserImageList
 import com.imdoomlord.mymemory.utils.EXTRA_BOARD_SIZE
+import com.imdoomlord.mymemory.utils.EXTRA_GAME_NAME
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +40,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rvBoard: RecyclerView
     private lateinit var tvNumMoves: TextView
     private lateinit var tvNumPairs: TextView
+    private val db = Firebase.firestore
+    private var gameName: String? = null
+    private var customGameImages: List<String>? = null
     //? memoryGame and adapter is made as property of MainActivity class ->> *** TO Make them usable in other functions/....
     private lateinit var memoryGame: MemoryGame
     private lateinit var adapter: MemoryBoardAdapter
@@ -62,9 +72,47 @@ class MainActivity : AppCompatActivity() {
         // This must be on onCreate to launch an activity..
         launcher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
-        ){
+        ){result->
+            if(result.resultCode == Activity.RESULT_OK){
+                // CreateActivity result will be handled here.
+                val data: Intent? = result.data
+                val customGameName = data?.getStringExtra(EXTRA_GAME_NAME)
+                if(customGameName == null){
+                    Log.e(TAG,"Got null in custom game from CreateActivity")
+                    return@registerForActivityResult
+                }
+                downloadGame(customGameName)
+
+
+            }
 
         }
+    }
+
+    private fun downloadGame(customGameName: String) {
+        db.collection("games").document(customGameName).get().addOnSuccessListener {document->
+            val userImageList = document.toObject(UserImageList::class.java)
+            if (userImageList?.images == null) {
+                Log.e(TAG,"Invalid custom game data from Firestore")
+                Snackbar.make(clRoot, "Sorry, $customGameName name se koi game nhi mil rha h", Snackbar.LENGTH_LONG).show()
+                return@addOnSuccessListener
+            }
+            val numCards = userImageList.images!!.size * 2
+            boardSize = BoardSize.getByValue(numCards)
+            customGameImages = userImageList.images
+            for (imageUrl in userImageList.images!!) {
+                Picasso.get().load(imageUrl).fetch()
+            }
+            Snackbar.make(clRoot, "You are now playing '$customGameName'!", Snackbar.LENGTH_LONG ).show()
+            gameName = customGameName
+            setupBoard()
+
+        }.addOnFailureListener { exception->
+            Log.e(TAG,"Exception when retrieving game", exception)
+
+
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -96,12 +144,26 @@ class MainActivity : AppCompatActivity() {
                 showCreationDialog()
                 return true
             }
+            R.id.mi_download -> {
+                showDownloadDialog()
+                return true
+            }
 
         }
         return super.onOptionsItemSelected(item)
     }
 
-    
+    private fun showDownloadDialog() {
+        val boardDownloadView = LayoutInflater.from(this).inflate(R.layout.dialog_download_board, null)
+        showAlertDialog("Fetch memory game", boardDownloadView, View.OnClickListener {
+            // Grab the text of the game name that the user wants to download
+            val etDownloadGame = boardDownloadView.findViewById<EditText>(R.id.etDownloadGame)
+            val gameToDownload = etDownloadGame.text.toString().trim()
+            downloadGame(gameToDownload)
+
+        })
+    }
+
 
     private fun showCreationDialog() {
         val boardSizeView = LayoutInflater.from(this).inflate(R.layout.dialog_board_size, null)
@@ -118,6 +180,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CreateActivity::class.java)
             intent.putExtra(EXTRA_BOARD_SIZE, desiredBoardSize)
             launcher.launch(intent)
+
         })
     }
 
@@ -136,6 +199,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.rbMedium -> BoardSize.MEDIUM
                 else -> BoardSize.HARD
             }
+            gameName = null
+            customGameImages = null
             setupBoard()
         })
     }
@@ -151,7 +216,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBoard(){
-
+        supportActionBar?.title = gameName ?: getString(R.string.app_name)
         when (boardSize) {
             BoardSize.EASY -> {
                 tvNumMoves.text = "EASY: 4 x 2"
@@ -167,7 +232,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         tvNumPairs.setTextColor(ContextCompat.getColor(this, R.color.color_progress_none))
-        memoryGame = MemoryGame(boardSize)
+        memoryGame = MemoryGame(boardSize, customGameImages)
 
         //Adapter -- binds data into views in RecyclerView -- PROPERTY
         // Adapter initialized with class(MemoryBoardAdapter -- holds data for views) takes context and total layout views

@@ -38,8 +38,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:digits="abcdefghijklmnopqrstuvwxyz0123456789_-"
         android:ems="10"
         android:hint="Game Name (eg: my_cards100)"
@@ -49,7 +49,8 @@
         android:maxLines="1"
         app:layout_constraintBottom_toTopOf="@+id/btSave"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvImagePicker" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvImagePicker"

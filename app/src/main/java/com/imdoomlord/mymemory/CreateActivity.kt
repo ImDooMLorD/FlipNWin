@@ -229,6 +229,7 @@ class CreateActivity : AppCompatActivity() {
         }.addOnFailureListener { exception ->
             Log.e(TAG, "Encountered error while saving memory game", exception)
             Toast.makeText(this, "Encountered error while saving memory game", Toast.LENGTH_SHORT).show()
+            btSave.isEnabled = true
         }
 
     }
@@ -284,7 +285,7 @@ class CreateActivity : AppCompatActivity() {
         // Each memory game is document
         // Every document lives in a collection
         // here, collection is games
-        db.collection("games").document()
+        db.collection("games").document(gameName)
             .set(mapOf("images" to imageUrls))
             .addOnCompleteListener { gameCreationTask ->
                 pbUploading.visibility = View.GONE
@@ -295,7 +296,7 @@ class CreateActivity : AppCompatActivity() {
                 }
                 Log.i(TAG, "Successfully created game $gameName")
                 AlertDialog.Builder(this)
-                    .setTitle("Upload complete! Let's Play your game $gameName")
+                    .setTitle("Upload complete! Let's Play your game '$gameName'")
                     .setPositiveButton("OK") { _,_ ->
                         val resultData = Intent()
                         resultData.putExtra(EXTRA_GAME_NAME, gameName)
