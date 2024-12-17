@@ -41,13 +41,13 @@ An engaging **card-flip memory game** for Android, built with **Kotlin** and int
 Add screenshots of your app here for a visual representation of the gameplay.
 
 ### 1. Game Board  
-![Game Board](assets/images/game_board.png)  
+![Game Board](screenshots/game_board.png)  
 
 ### 2. Custom Board Creation  
-![Custom Board](assets/images/custom_board.png)  
+![Custom Board](screenshots/custom_board.png)  
 
 ### 3. Winning Confetti  
-![Winning Confetti](assets/images/winning_confetti.png)  
+![Winning Confetti](screenshots/winning_confetti.png)  
 
 **How to Run the Project**
 --------------------------
