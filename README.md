@@ -50,7 +50,7 @@ Add screenshots of your app here for a visual representation of the gameplay. Ex
 **How to Run the Project**
 --------------------------
 
-1.  bashCopy codegit clone https://github.com/yourusername/FlipNWin.git
+1.  ```git clone https://github.com/yourusername/FlipNWin.git```
     
 2.  Open the project in **Android Studio**.
     
