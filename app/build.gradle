@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.imdoomlord.mymemory'
+    namespace 'com.imdoomlord.flipnwin'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.imdoomlord.mymemory"
+        applicationId "com.imdoomlord.flipnwin"
         minSdk 24
         targetSdk 34
         versionCode 1

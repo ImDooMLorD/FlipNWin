@@ -1,7 +1,6 @@
-package com.imdoomlord.mymemory
+package com.imdoomlord.flipnwin
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +10,11 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.imdoomlord.mymemory.models.BoardSize
-import com.imdoomlord.mymemory.models.MemoryCard
+import com.imdoomlord.flipnwin.models.BoardSize
+import com.imdoomlord.flipnwin.models.MemoryCard
 import com.squareup.picasso.Picasso
 import kotlin.math.min
-import com.imdoomlord.mymemory.MemoryBoardAdapter.ViewHolder as ViewHolder
+import com.imdoomlord.flipnwin.MemoryBoardAdapter.ViewHolder as ViewHolder
 
 class MemoryBoardAdapter(
     private val context: Context,

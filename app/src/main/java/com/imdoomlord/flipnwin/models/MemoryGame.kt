@@ -1,6 +1,6 @@
-package com.imdoomlord.mymemory.models
+package com.imdoomlord.flipnwin.models
 
-import com.imdoomlord.mymemory.utils.DEFAULT_ICONS
+import com.imdoomlord.flipnwin.utils.DEFAULT_ICONS
 
 // CLASS TO HANDLE GAME_LOGIC
 class MemoryGame(private val boardSize: BoardSize, customImages: List<String>?) {

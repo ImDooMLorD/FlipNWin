@@ -1,4 +1,4 @@
-package com.imdoomlord.mymemory.models
+package com.imdoomlord.flipnwin.models
 
 import com.google.firebase.firestore.PropertyName
 

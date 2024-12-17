@@ -1,4 +1,4 @@
-package com.imdoomlord.mymemory.models
+package com.imdoomlord.flipnwin.models
 
 enum class BoardSize (val numCards: Int) {
     EASY(8),

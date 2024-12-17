@@ -1,4 +1,4 @@
-package com.imdoomlord.mymemory
+package com.imdoomlord.flipnwin
 
 import org.junit.Test
 

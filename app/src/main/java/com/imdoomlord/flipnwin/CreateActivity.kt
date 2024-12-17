@@ -1,4 +1,4 @@
-package com.imdoomlord.mymemory
+package com.imdoomlord.flipnwin
 
 import android.Manifest
 import android.app.Activity
@@ -29,12 +29,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.storage
-import com.imdoomlord.mymemory.models.BoardSize
-import com.imdoomlord.mymemory.utils.BitmapScaler
-import com.imdoomlord.mymemory.utils.EXTRA_BOARD_SIZE
-import com.imdoomlord.mymemory.utils.EXTRA_GAME_NAME
-import com.imdoomlord.mymemory.utils.isPermissionGranted
-import kotlinx.coroutines.handleCoroutineException
+import com.imdoomlord.flipnwin.models.BoardSize
+import com.imdoomlord.flipnwin.utils.BitmapScaler
+import com.imdoomlord.flipnwin.utils.EXTRA_BOARD_SIZE
+import com.imdoomlord.flipnwin.utils.EXTRA_GAME_NAME
+import com.imdoomlord.flipnwin.utils.isPermissionGranted
 import java.io.ByteArrayOutputStream
 
 class CreateActivity : AppCompatActivity() {

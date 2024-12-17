@@ -1,4 +1,4 @@
-package com.imdoomlord.mymemory.models
+package com.imdoomlord.flipnwin.models
 
 data class MemoryCard(
     // data class of one MemoryCard.

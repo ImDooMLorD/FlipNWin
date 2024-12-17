@@ -1,4 +1,4 @@
-package com.imdoomlord.mymemory.utils
+package com.imdoomlord.flipnwin.utils
 
 import android.graphics.Bitmap
 

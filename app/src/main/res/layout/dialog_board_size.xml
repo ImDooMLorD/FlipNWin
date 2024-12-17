@@ -32,6 +32,7 @@
         <RadioButton
             android:id="@+id/rbHard"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="Hard (7 x 4)" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

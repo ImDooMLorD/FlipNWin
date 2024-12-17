@@ -1,4 +1,4 @@
-package com.imdoomlord.mymemory
+package com.imdoomlord.flipnwin
 
 import android.animation.ArgbEvaluator
 import android.app.Activity
@@ -25,11 +25,11 @@ import com.github.jinatonic.confetti.CommonConfetti
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
-import com.imdoomlord.mymemory.models.BoardSize
-import com.imdoomlord.mymemory.models.MemoryGame
-import com.imdoomlord.mymemory.models.UserImageList
-import com.imdoomlord.mymemory.utils.EXTRA_BOARD_SIZE
-import com.imdoomlord.mymemory.utils.EXTRA_GAME_NAME
+import com.imdoomlord.flipnwin.models.BoardSize
+import com.imdoomlord.flipnwin.models.MemoryGame
+import com.imdoomlord.flipnwin.models.UserImageList
+import com.imdoomlord.flipnwin.utils.EXTRA_BOARD_SIZE
+import com.imdoomlord.flipnwin.utils.EXTRA_GAME_NAME
 import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {

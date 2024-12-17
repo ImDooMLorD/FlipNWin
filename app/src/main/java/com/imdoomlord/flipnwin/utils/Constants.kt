@@ -1,6 +1,6 @@
-package com.imdoomlord.mymemory.utils
+package com.imdoomlord.flipnwin.utils
 
-import com.imdoomlord.mymemory.R
+import com.imdoomlord.flipnwin.R
 
 const val EXTRA_BOARD_SIZE = "EXTRA_BOARD_SIZE"
 const val EXTRA_GAME_NAME = "EXTRA_GAME_NAME"

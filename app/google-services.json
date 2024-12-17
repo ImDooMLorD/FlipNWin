@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "678679035099",
-    "project_id": "mymemory-97b2a",
-    "storage_bucket": "mymemory-97b2a.appspot.com"
+    "project_number": "827348091273",
+    "project_id": "flipnwin-b8ecd",
+    "storage_bucket": "flipnwin-b8ecd.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:678679035099:android:d5fdbf959cd0015a74a0fe",
+        "mobilesdk_app_id": "1:827348091273:android:2afb49da9399e24eade158",
         "android_client_info": {
-          "package_name": "com.imdoomlord.mymemory"
+          "package_name": "com.imdoomlord.flipnwin"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBXxX-J74OnRVYwHEJlJ-YPlznnqeHKelc"
+          "current_key": "AIzaSyADVb30lS_U1nDlSeBnroEVZ5oseSgkzo8"
         }
       ],
       "services": {
